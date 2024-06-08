@@ -1,0 +1,15 @@
+src
+node_modules
+tests
+.editorconfig
+.env
+.env.example
+.eslintcache
+.eslintignore
+.eslintrc.cjs
+.git*
+.gitignore
+jest.config.cjs
+tsconfig.eslint.json
+tsconfig.json
+coverage
