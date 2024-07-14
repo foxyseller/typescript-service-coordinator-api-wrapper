@@ -1,7 +1,7 @@
 {
   "name": "@foxyseller/parser-coordinator-api-wrapper",
   "description": "FoxySeller Parser Coordinator API node bindings",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "type": "module",
   "repository": "git@github.com:foxyseller/typescript-parser-coordinator-api-wrapper.git",

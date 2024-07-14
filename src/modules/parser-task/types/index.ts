@@ -19,7 +19,8 @@ export namespace ParserCoordinatorApiStructure {
         | 'Import'
         | 'CardStockUpdate'
         | 'CardPriceUpdate'
-        | 'ScrapProductCard';
+        | 'ScrapProductCard'
+        | 'ScrapCompetitors';
 
       export type Status =
         'Created'
