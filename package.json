@@ -1,10 +1,10 @@
 {
-  "name": "@foxyseller/parser-coordinator-api-wrapper",
-  "description": "FoxySeller Parser Coordinator API node bindings",
-  "version": "0.2.0",
+  "name": "@foxyseller/service-coordinator-api-wrapper",
+  "description": "FoxySeller Service Coordinator API node bindings",
+  "version": "0.3.0",
   "license": "MIT",
   "type": "module",
-  "repository": "git@github.com:foxyseller/typescript-parser-coordinator-api-wrapper.git",
+  "repository": "git@github.com:foxyseller/typescript-service-coordinator-api-wrapper.git",
   "author": {
     "name": "Svyatoslav Fyodorov",
     "email": "intelrug@gmail.com",

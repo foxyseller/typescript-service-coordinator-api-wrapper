@@ -1,17 +1,17 @@
-# @foxyseller/parser-coordinator-api-wrapper
+# @foxyseller/service-coordinator-api-wrapper
 
 ### Install
 
 ```bash
-$ pnpm i git+ssh://git@github.com:foxyseller/typescript-parser-coordinator-api-wrapper.git#0.1.0
+$ pnpm i git+ssh://git@github.com:foxyseller/typescript-service-coordinator-api-wrapper.git#0.1.0
 ```
 
 ### Usage
 
 ``` typescript
-import { ParserCoordinatorApi } from '@foxyseller/parser-coordinator-api-wrapper';
+import { ServiceCoordinatorApi } from '@foxyseller/service-coordinator-api-wrapper';
 
-const coordinator = new ParserCoordinatorApi({
+const coordinator = new ServiceCoordinatorApi({
     baseUrl: https://foxyseller-pc.korso.cc,
     apiKey: '******',
 });

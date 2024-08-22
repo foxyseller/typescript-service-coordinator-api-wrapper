@@ -1,4 +1,4 @@
-export interface ParserCoordinatorApiOptions {
+export interface ServiceCoordinatorApiOptions {
   baseUrl: string;
   apiKey: string;
 }

@@ -1,12 +1,12 @@
-import { ParserCoordinatorApi } from '~/index.js';
+import { ServiceCoordinatorApi } from '~/index.js';
 
 import 'dotenv/config';
 
 describe('/api/parserTasks', () => {
-  let api: ParserCoordinatorApi;
+  let api: ServiceCoordinatorApi;
 
   beforeAll(async () => {
-    api = new ParserCoordinatorApi({
+    api = new ServiceCoordinatorApi({
       baseUrl: process.env.API_BASE_URL!,
       apiKey: process.env.API_KEY!,
     });
@@ -17,7 +17,7 @@ describe('/api/parserTasks', () => {
       const request = api.parserTask.take({
         take: 10,
         parserTaskType: 'WildberriesScraper',
-        parserTaskSubType: 'GetProductCard',
+        parserTaskSubType: 'ScrapProductCard',
       });
 
       const json = await request.json();

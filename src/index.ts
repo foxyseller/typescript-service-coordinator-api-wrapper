@@ -1,12 +1,14 @@
 import { DefaultClient } from '~/clients/index.js';
 import { ModuleContext } from '~/modules/base/module-context.js';
+import { ExportTask } from '~/modules/export-task/index.js';
 import { ParserTask } from '~/modules/parser-task/index.js';
-import { ParserCoordinatorApiOptions } from '~/options.js';
+import { ServiceCoordinatorApiOptions } from '~/options.js';
 
-export class ParserCoordinatorApi {
+export class ServiceCoordinatorApi {
+  public readonly exportTask: ExportTask;
   public readonly parserTask: ParserTask;
 
-  constructor(options: ParserCoordinatorApiOptions) {
+  constructor(options: ServiceCoordinatorApiOptions) {
     const client = new DefaultClient({
       prefixUrl: options.baseUrl,
       getBearerToken: () => {
@@ -16,6 +18,7 @@ export class ParserCoordinatorApi {
 
     const context = new ModuleContext(client);
 
+    this.exportTask = new ExportTask(context);
     this.parserTask = new ParserTask(context);
   }
 }
@@ -23,3 +26,4 @@ export class ParserCoordinatorApi {
 export * from './clients/index.js';
 export * from './modules/base/types/index.js';
 export * from './modules/parser-task/types/index.js';
+export * from './modules/export-task/types/index.js';

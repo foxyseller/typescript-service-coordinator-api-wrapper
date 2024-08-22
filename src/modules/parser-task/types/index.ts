@@ -1,20 +1,19 @@
 import type {
   BaseResponse,
   Id,
-  ISODateTime,
   Marketplace,
   SearchParameters,
+  TaskMetadata,
 } from '~/modules/base/types/index.js';
 
-export namespace ParserCoordinatorApiStructure {
-  export namespace ParserTask {
-    export namespace Schemas {
-      export type Type =
+export namespace ParserTaskStructure {
+  export namespace Schemas {
+    export type Type =
         'WildberriesApi'
         | 'OzonApi'
         | 'WildberriesScraper';
 
-      export type SubType =
+    export type SubType =
         'None'
         | 'Import'
         | 'CardStockUpdate'
@@ -22,76 +21,44 @@ export namespace ParserCoordinatorApiStructure {
         | 'ScrapProductCard'
         | 'ScrapCompetitors';
 
-      export type Status =
-        'Created'
-        | 'WaitingForResult'
-        | 'ProcessingResult'
-        | 'Failed'
-        | 'ProcessingFailed'
-        | 'Successful';
+    export interface Job {
+      taskId: Id;
+      tryId: Id;
+      marketplace: Marketplace;
+      type: Type;
+      subType: SubType;
+      taskData: string;
+    }
+  }
 
-      export interface Job {
-        taskId: Id;
-        tryId: Id;
-        marketplace: Marketplace;
-        type: Type;
-        subType: SubType;
-        taskData: string;
+  export namespace Paths {
+    export namespace Take {
+      import Type = ParserTaskStructure.Schemas.Type;
+      import SubType = ParserTaskStructure.Schemas.SubType;
+
+      export interface RequestQuery extends SearchParameters {
+        take: number;
+        parserTaskType: Type;
+        parserTaskSubType: SubType;
       }
 
-      export type LogSeverity =
-        'Unspecified'
-        | 'Debug'
-        | 'Information'
-        | 'Warning'
-        | 'Error'
-        | 'Critical';
+      export namespace Responses {
+        import ParserTaskJob = ParserTaskStructure.Schemas.Job;
 
-      export interface Log {
-        timestamp: ISODateTime;
-        severity: LogSeverity;
-        text: string;
+        export type $200 = BaseResponse<ParserTaskJob>;
       }
     }
 
-    export namespace Paths {
-      export namespace Take {
-        import ParserTaskType = ParserCoordinatorApiStructure.ParserTask.Schemas.Type;
-        import ParserTaskSubType = ParserCoordinatorApiStructure.ParserTask.Schemas.SubType;
+    export namespace Result {
+      export type RequestBody = {
+        taskId: Id;
+        tryId: Id;
+        metadata: TaskMetadata;
+        payload: string;
+      };
 
-        export interface RequestQuery extends SearchParameters {
-          take: number;
-          parserTaskType: ParserTaskType;
-          parserTaskSubType: ParserTaskSubType;
-        }
-
-        export namespace Responses {
-          import ParserTaskJob = ParserCoordinatorApiStructure.ParserTask.Schemas.Job;
-
-          export type $200 = BaseResponse<ParserTaskJob>;
-        }
-      }
-
-      export namespace Result {
-        import Status = ParserCoordinatorApiStructure.ParserTask.Schemas.Status;
-        import Log = ParserCoordinatorApiStructure.ParserTask.Schemas.Log;
-
-        export type RequestBody = {
-          taskId: Id;
-          tryId: Id;
-          metadata: {
-            workDuration: number;
-            receivedAt: ISODateTime;
-            endedAt: ISODateTime;
-            status: Status;
-            logs: Log[];
-          };
-          payload: string;
-        };
-
-        export namespace Responses {
-          export type $200 = BaseResponse;
-        }
+      export namespace Responses {
+        export type $200 = BaseResponse;
       }
     }
   }
