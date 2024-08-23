@@ -1,7 +1,7 @@
 {
   "name": "@foxyseller/service-coordinator-api-wrapper",
   "description": "FoxySeller Service Coordinator API node bindings",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "type": "module",
   "repository": "git@github.com:foxyseller/typescript-service-coordinator-api-wrapper.git",
@@ -17,6 +17,7 @@
     "default": "./dist/index.js",
     "types": "./dist/index.d.ts"
   },
+  "types": "./dist/index.d.ts",
   "sideEffects": false,
   "files": [
     "dist/**/*"
