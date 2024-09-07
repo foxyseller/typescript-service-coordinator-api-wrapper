@@ -29,7 +29,7 @@ export namespace MarketplaceScraperStructure {
       export namespace Responses {
         import Task = MarketplaceScraperStructure.Schemas.Task;
 
-        export type $200 = BaseResponse<Task>;
+        export type $200 = BaseResponse<Task[]>;
       }
     }
 
