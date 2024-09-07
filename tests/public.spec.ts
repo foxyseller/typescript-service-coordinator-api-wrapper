@@ -2,7 +2,7 @@ import { ServiceCoordinatorApi } from '~/index.js';
 
 import 'dotenv/config';
 
-describe('/api/parserTasks', () => {
+describe('/api/MarketplaceScraper/tasks', () => {
   let api: ServiceCoordinatorApi;
 
   beforeAll(async () => {
@@ -14,7 +14,7 @@ describe('/api/parserTasks', () => {
 
   describe('/take', () => {
     test('should pass test', async () => {
-      const request = api.parserTask.take({
+      const request = api.marketplaceScraper.take({
         take: 10,
         parserTaskType: 'WildberriesScraper',
         parserTaskSubType: 'ScrapProductCard',

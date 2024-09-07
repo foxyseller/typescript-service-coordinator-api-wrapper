@@ -1,12 +1,12 @@
 import { DefaultClient } from '~/clients/index.js';
 import { ModuleContext } from '~/modules/base/module-context.js';
-import { ExportTask } from '~/modules/export-task/index.js';
-import { ParserTask } from '~/modules/parser-task/index.js';
+import { ExportModule } from '~/modules/export/index.js';
+import { MarketplaceScraperModule } from '~/modules/marketplace-scraper/index.js';
 import { ServiceCoordinatorApiOptions } from '~/options.js';
 
 export class ServiceCoordinatorApi {
-  public readonly exportTask: ExportTask;
-  public readonly parserTask: ParserTask;
+  public readonly export: ExportModule;
+  public readonly marketplaceScraper: MarketplaceScraperModule;
 
   constructor(options: ServiceCoordinatorApiOptions) {
     const client = new DefaultClient({
@@ -18,12 +18,12 @@ export class ServiceCoordinatorApi {
 
     const context = new ModuleContext(client);
 
-    this.exportTask = new ExportTask(context);
-    this.parserTask = new ParserTask(context);
+    this.export = new ExportModule(context);
+    this.marketplaceScraper = new MarketplaceScraperModule(context);
   }
 }
 
 export * from './clients/index.js';
 export * from './modules/base/types/index.js';
-export * from './modules/parser-task/types/index.js';
-export * from './modules/export-task/types/index.js';
+export * from './modules/export/types/index.js';
+export * from './modules/marketplace-scraper/types/index.js';
