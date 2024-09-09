@@ -15,9 +15,8 @@ describe('/api/MarketplaceScraper/tasks', () => {
   describe('/take', () => {
     test('should pass test', async () => {
       const request = api.marketplaceScraper.take({
-        take: 10,
-        parserTaskType: 'WildberriesScraper',
-        parserTaskSubType: 'ScrapProductCard',
+        taskTypes: ['ScrapBlacklistedCompetitors'],
+        marketplaces: ['Wildberries'],
       });
 
       const json = await request.json();
