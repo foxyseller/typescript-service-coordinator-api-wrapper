@@ -3,7 +3,8 @@ import { BaseResponse, Id, TaskMetadata } from '~/modules/base/types/index.js';
 export namespace ExportStructure {
   export namespace Schemas {
     export type TaskType =
-      'Competitors';
+      'ExportCompetitors'
+      | 'ExportBlacklistedCompetitors';
 
     export interface Task {
       taskId: Id;
